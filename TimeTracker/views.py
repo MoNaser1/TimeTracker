@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
 from .forms import MyCustomSignupForm
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render
@@ -25,7 +25,7 @@ def list(request):
         print(form.errors)
         if form.is_valid():
             form.save()  # saved to the database
-            return redirect('/')
+            return redirect('/list')
     context = {'tasks': tasks, 'form': form}
 
     return render(request, "layout/list.html", context)
@@ -48,7 +48,7 @@ def deleteTask(request, pk):
     item = Post.objects.get(id=pk)
     if request.method == 'POST':
         item.delete()
-        return redirect('/')
+        return redirect('/list')
     context = {'item': item}
     return render(request, 'layout/deleteTask.html', context)
 
@@ -94,7 +94,7 @@ def end_time(request, pk):
 #
 #     return render(request, 'layout/list.html', context)
 
-def signup(request, pk):
+def signup(request):
     if request.methods == 'POST':
         form = MyCustomSignupForm(request.POST)
         if form.is_valid():
@@ -103,8 +103,7 @@ def signup(request, pk):
             password = form.cleaned_data['password1']
             user = authenticate(username=username, password=password)
             login(request, user)
-            company = get_object_or_404(Company, pk=pk)
-            return redirect('layout/list.html', {'company': company})
+            return redirect('/accounts/profile')
     else:
         form = MyCustomSignupForm()
 

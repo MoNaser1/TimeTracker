@@ -24,12 +24,12 @@ class Employee(models.Model):
 
 class Post(models.Model):
     title = models.CharField(max_length=200)
-    text = models.TextField()
+    text = models.TextField(blank=True)
     complete = models.BooleanField(default=False)
-    created_date = models.DateTimeField(default=timezone.now)
+    created_date = models.DateTimeField(default=timezone.now, blank=True)
     start_time = models.DateTimeField(auto_now_add=False, blank=False)
     end_time = models.DateTimeField(auto_now_add=False, blank=False)
-    employee = models.ForeignKey('Employee', on_delete=models.CASCADE)
+    employee = models.ForeignKey('Employee', on_delete=models.CASCADE, blank=True, null=True)
 
     def __str__(self):
         return self.title

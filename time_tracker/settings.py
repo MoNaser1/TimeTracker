@@ -15,7 +15,7 @@ SECRET_KEY = '#ln=jyy$poq!9xpb834%h*a+wup(=l@k+iis*cnn^za#=ne92j'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['yousefhou.pythonanywhere.com']
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
@@ -147,6 +147,7 @@ STATICFILES_DIRS = (
 )
 
 STATIC_URL = '/static/'
+
 
 TEMPLATE_DIRS = [
     os.path.join(BASE_DIR, 'templates/'),

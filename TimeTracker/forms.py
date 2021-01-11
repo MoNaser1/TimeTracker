@@ -17,7 +17,7 @@ class TaskForm(forms.ModelForm):
     title = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Add new task...'}))
     start_time = forms.DateTimeField(widget=dateTime(), input_formats='%d/%m/%y %H:%M:%S')
     end_time = forms.DateTimeField(widget=dateTime(), input_formats='%d/%m/%y %H:%M:%S')
-    # employee = forms.AutoField(primary_key=True, editable=False)
+    # employee = forms.CharField()
 
     class Meta:
         model = Post

@@ -1,5 +1,17 @@
 {% extends 'layout/base.html' %}
 {% block content %}
+<style>
+
+	.center-column{
+		width:600px;
+		margin: 20px auto;
+		padding:20px;
+		background-color: #fff;
+		border-radius: 3px;
+		box-shadow: 6px 2px 30px 0px rgba(0,0,0,0.75);
+	}
+
+</style>
 <h3>Update Task</h3>
 {{form.errors}}
 {% if form.errors %}
@@ -16,12 +28,22 @@
         </div>
     {% endfor %}
 {% endif %}
-<form method="POST" action="">
-   {% csrf_token %}
-    {{form}}
-<!--    update/Edit the Task:{{form.title}}-->
-<!--     update/Edit start time:{{form.start_time}}-->
-<!--    update/Edit end time:{{form.end_time}}-->
-   <input type="submit" name="Update Task">
-</form>
+<div class="center-column">
+    <form method="POST">
+        {% csrf_token %}
+
+        edit Task:
+        <div>{{form.title}}</div>
+        edit Start Time:
+        <div>{{form.start_time}}</div>
+        edit End Time:
+        <div>{{form.end_time}}</div>
+<!--        employee:-->
+<!--        <div>{{form.employee}}</div>-->
+        completed:
+        <div>{{form.complete}}</div>
+        <div><input type="submit" name="Update Task"></div>
+
+    </form>
+</div>
 {% endblock %}
